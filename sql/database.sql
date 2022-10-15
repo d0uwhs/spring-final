@@ -1,3 +1,4 @@
+DROP DATABASE spring_practice;
 CREATE DATABASE spring_practice;
 USE spring_practice;
 
@@ -26,7 +27,7 @@ CREATE TABLE members
 
 CREATE TABLE roles
 (
-    role_no   BIGINT PRIMARY KEY,
+    role_no   BIGINT PRIMARY KEY AUTO_INCREMENT,
     role_name VARCHAR(15) NOT NULL
 );
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.minjun.springfinal.mapper.PostMapper">
+    <insert id="insertPost">
+<!--        <selectKey order="AFTER" keyProperty="userId" resultType="long">-->
+<!--            select LAST_INSERT_ID() as user_id-->
+<!--        </selectKey>-->
+        INSERT INTO spring_practice.post(user_id, post_title, post_body)
+        VALUES (#{userId},#{postTitle}, #{postBody})
+    </insert>
+
+    <select id="findById" resultType="com.minjun.springfinal.dto.response.PostResponseDTO">
+        SELECT *
+        FROM spring_practice.post
+        WHERE post_no = #{postNo}
+    </select>
+</mapper>
