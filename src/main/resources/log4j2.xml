@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration status="debug">
+
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd hh:mm:ss} %5p [%c] %m%n"/>
+        </Console>
+    </Appenders>
+
+    <loggers>
+        <root level="info" additivity="true">
+            <AppenderRef ref="console"/>
+        </root>
+        <!--        스프링 웹 관련 부분 로거 설정-->
+        <logger level="info" name="org.springframework.web" additivity="false">
+            <AppenderRef ref="console"/>
+        </logger>
+        <!--        스프링 프레임워크 부분 로거 설정-->
+        <logger level="debug" name="org.springframework" additivity="false">
+            <AppenderRef ref="console"/>
+        </logger>
+    </loggers>
+
+</configuration>
