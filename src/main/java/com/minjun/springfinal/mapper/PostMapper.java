@@ -1,13 +1,13 @@
 package com.minjun.springfinal.mapper;
 
-import com.minjun.springfinal.dto.request.PostRequestDTO;
-import com.minjun.springfinal.dto.response.PostResponseDTO;
+import com.minjun.springfinal.dto.request.PostRequest;
+import com.minjun.springfinal.dto.response.PostResponse;
 
 import java.util.Optional;
 
 public interface PostMapper {
-    Optional<PostResponseDTO> findById(Long postNo);
+    Optional<PostResponse> findById(Long postNo);
 
-    void insertPost(PostRequestDTO postRequestDTO);
+    void insertPost(PostRequest postRequest);
 
 }

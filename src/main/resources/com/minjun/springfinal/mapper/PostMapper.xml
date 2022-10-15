@@ -10,7 +10,7 @@
         VALUES (#{userId},#{postTitle}, #{postBody})
     </insert>
 
-    <select id="findById" resultType="com.minjun.springfinal.dto.response.PostResponseDTO">
+    <select id="findById" resultType="com.minjun.springfinal.dto.response.PostResponse">
         SELECT *
         FROM spring_practice.post
         WHERE post_no = #{postNo}

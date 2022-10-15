@@ -37,6 +37,18 @@ dependencies {
     implementation 'org.springframework:spring-aop:5.3.22'
 
     /**
+     * Spring Security
+     */
+    implementation 'org.springframework.security:spring-security-core:5.7.3'
+    implementation 'org.springframework.security:spring-security-web:5.7.3'
+    implementation 'org.springframework.security:spring-security-config:5.7.3'
+    implementation 'org.springframework.security:spring-security-taglibs:5.7.3'
+
+
+
+
+
+    /**
      * Lombok*/
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'

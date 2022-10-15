@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostResponseDTO {
+public class PostResponse {
     private Long postNo;
     private Long userId;
     private String postTitle;
