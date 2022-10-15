@@ -4,20 +4,38 @@
 
 <mapper namespace="com.minjun.springfinal.mapper.MemberMapper">
 
-    <!--    <resultMap id="memberMap" type="com.minjun.springfinal.dto.Member">-->
-    <!--        <result column="username" property="username"/>-->
-    <!--        <result column="password" property="password"/>-->
-    <!--        <result column="name" property="name"/>-->
-    <!--        <collection property="roles" column="role" resultMap="memberMap"/>-->
-    <!--    </resultMap>-->
+    <!--    회원 권한을 직접 매핑하기 위한 resultMap-->
+    <!--    컬럼은 DB, 프로퍼티는 DTO-->
+    <!--    컬럼이 여러개가 되면, Collection 타입을 주면, 배열로 바뀐다.-->
+    <resultMap id="rolesMap" type="String">
+        <result column="roleName"/>
+    </resultMap>
 
-    <!--    <resultMap id="rolesMap" type="String">-->
-    <!--        <result column="roles" property="roles"-->
-    <!--    </resultMap>-->
+    <!--    회원 정보를 직접 매핑하기 위한 resultMap -->
+    <!--    TODO : resultMap 을 사용하지 않고 컬럼명 카멜케이스를 할 수 있는 방법은?-->
+    <resultMap id="memberMap" type="com.minjun.springfinal.dto.Member">
+        <result column="userId" property="userId"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="name" property="name"/>
+        <!--
+        타입 핸들러를 통한 날짜 인증? JSR-310
+        <typehandler callback="com.ibatis.sqlmap.engine.type.SqlTimestampTypeHandler" javatype="java.util.Date"></typehandler>
+        -->
+        <result column="createdDt" property="createdDt" jdbcType="TIMESTAMP" javaType="java.time.LocalDateTime"/>
+        <result column="disabled" property="disabled"/>
+        <!--    TODO : Map으로 바꿀수는 없나?    -->
+        <collection column="roleNo" property="roles" resultMap="rolesMap"/>
+    </resultMap>
 
-    <!--    <select id="findByUsername" resultType="com.minjun.springfinal.dto.Member">-->
-    <!--        SELECT user_id, username, password, role_no, role_name-->
-    <!--    </select>-->
+    <!--JOIN을 통해 계정 정보를 가져옵니다.-->
+    <select id="findByUsername" resultMap="memberMap">
+        SELECT username, password, name, r.roleName
+        FROM members
+                 LEFT JOIN member_roles mr on members.userId = mr.userId
+                 LEFT JOIN roles r on mr.roleNo = r.roleNo
+        WHERE username = #{username}
+    </select>
 
     <!--    <insert id="insertAll">-->
 

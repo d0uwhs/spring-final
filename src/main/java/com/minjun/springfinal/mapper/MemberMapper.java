@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.Optional;
 
 public interface MemberMapper {
-//    Optional<Member> findByUsername(String username);
+    Optional<Member> findByUsername(String username);
 
     void insertMember(Member member);
 

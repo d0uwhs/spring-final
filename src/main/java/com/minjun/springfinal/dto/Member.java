@@ -1,6 +1,5 @@
 package com.minjun.springfinal.dto;
 
-import com.minjun.springfinal.constants.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -32,11 +31,12 @@ public class Member implements UserDetails {
     private LocalDateTime createdDt;
     private LocalDateTime deletedDt;
     private boolean disabled;
-    private List<Long> roles;
+    private List<String> roles;
 
 
     /**
      * 권한 목록을 가져온다.
+     *
      * @return
      */
     @Override
@@ -46,7 +46,7 @@ public class Member implements UserDetails {
                          * GrantedAuthority 를 구현한 SimpleGrantedAuthority를 사용한다.
                          *
                          */
-                new SimpleGrantedAuthority("ROLE_" + roleName))
+                        new SimpleGrantedAuthority("ROLE_" + roleName))
                 .collect(Collectors.toList());
     }
 
@@ -62,33 +62,37 @@ public class Member implements UserDetails {
 
     /**
      * 계정이 만료가 되지 않았는지?
+     *
      * @return
      */
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     /**
      * 계정이 잠기지 않았는가?
+     *
      * @return
      */
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
+
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     /**
      * 계정이 사용 가능한가?
+     *
      * @return
      */
     @Override
     public boolean isEnabled() {
-        return !this.disabled;
+        return true;
     }
 }
