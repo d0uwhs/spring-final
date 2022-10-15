@@ -1,5 +1,6 @@
 package com.minjun.springfinal.dto;
 
+import com.minjun.springfinal.constants.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,7 +32,7 @@ public class Member implements UserDetails {
     private LocalDateTime createdDt;
     private LocalDateTime deletedDt;
     private boolean disabled;
-    private List<String> roles;
+    private List<Long> roles;
 
 
     /**

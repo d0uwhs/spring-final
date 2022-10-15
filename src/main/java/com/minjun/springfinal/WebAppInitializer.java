@@ -1,6 +1,7 @@
 package com.minjun.springfinal;
 
 import com.minjun.springfinal.config.RootConfig;
+import com.minjun.springfinal.config.SecurityConfig;
 import com.minjun.springfinal.config.WebConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -13,7 +14,8 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{
-                RootConfig.class
+                RootConfig.class,
+                SecurityConfig.class
         };
     }
 

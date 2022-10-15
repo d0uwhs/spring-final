@@ -31,7 +31,7 @@ CREATE TABLE roles
     role_name VARCHAR(15) NOT NULL
 );
 
-CREATE TABLE members_roles
+CREATE TABLE member_roles
 (
     user_id BIGINT NOT NULL,
     role_no BIGINT NOT NULL,
