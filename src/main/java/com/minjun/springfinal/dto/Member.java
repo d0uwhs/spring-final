@@ -46,7 +46,7 @@ public class Member implements UserDetails {
                          * GrantedAuthority 를 구현한 SimpleGrantedAuthority를 사용한다.
                          *
                          */
-                        new SimpleGrantedAuthority("ROLE_" + roleName))
+                        new SimpleGrantedAuthority(roleName))
                 .collect(Collectors.toList());
     }
 

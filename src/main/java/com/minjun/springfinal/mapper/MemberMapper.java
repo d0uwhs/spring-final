@@ -1,10 +1,12 @@
 package com.minjun.springfinal.mapper;
 
 import com.minjun.springfinal.dto.Member;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Optional;
 
+@Mapper // Mapper 애노테이션의 역할은?
 public interface MemberMapper {
     Optional<Member> findByUsername(String username);
 
